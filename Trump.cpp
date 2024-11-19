@@ -2,14 +2,10 @@
 
 // Constructeur
 Trump::Trump(float point, int number) : number(number) {
-    setNbPoint(point);  // Appel de la méthode de la classe de base pour définir les points
+    setNbPoint(point);  
 }
 
-// Implémentation de CanBePlacedOn
-bool Trump::CanBePlacedOn(const Card& c) {
-    // Exemple simple : une carte atout peut être posée sur une autre carte atout
-    return c.isTrump(c);
-}
+
 
 bool Trump::isTrump(const Card& c) {
     return true;
