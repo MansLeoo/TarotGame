@@ -1,21 +1,21 @@
 #pragma once
 #include <iostream>
 #include <vector>
+#include <memory>
 #include "Card.h"
 #include "Trump.h"
 #include "ColorCard.h"
 class CardPack
 {
 private :
-    std::vector < Card > CardList;
-    void Remove(Trump c);
-    void Remove(ColorCard c);
-    //void Remove(Joker c);
+    std::vector<std::shared_ptr<Card>> cardList;
 public :
-     Card DrawCard();
-     std::vector < Card > DrawCards(int numberCards);
-     void  Shuffle();
-     void Show();
-     void Remove(Card c);
+    std::shared_ptr<Card> drawCard();
+     std::vector < std::shared_ptr<Card> > drawCards(int numberCards);
+     void  shuffle();
+     void show();
+     void remove(std::shared_ptr<Card> c);
+     void addCard(std::shared_ptr<Card> c);
+     int size();
 };
 

@@ -128,16 +128,20 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Card.cpp" />
+    <ClCompile Include="CardMaking.cpp" />
     <ClCompile Include="CardPack.cpp" />
     <ClCompile Include="ColorCard.cpp" />
+    <ClCompile Include="Joker.cpp" />
     <ClCompile Include="TarotGame.cpp" />
     <ClCompile Include="testCard.cpp" />
     <ClCompile Include="Trump.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Card.h" />
+    <ClInclude Include="CardMaking.h" />
     <ClInclude Include="CardPack.h" />
     <ClInclude Include="ColorCard.h" />
+    <ClInclude Include="Joker.h" />
     <ClInclude Include="Suit.h" />
     <ClInclude Include="testCard.h" />
     <ClInclude Include="Trump.h" />

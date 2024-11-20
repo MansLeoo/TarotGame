@@ -6,13 +6,16 @@ private:
 	int number;
 
 public :
-    Trump(float point, int number);
+    Trump(int number);
 
-    bool isTrump(const Card& c) override;
-    bool isJoker(const Card& c) override;
-    bool isColor(const Card& c) override;
+    bool isTrump() override;
+    bool isJoker() override;
+    bool isColor() override;
+    bool isBout() override;
+
     void setNumber(const int num);
     int getNumber() const;
+    void show();
     ~Trump() override = default;
 };
 

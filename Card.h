@@ -1,13 +1,16 @@
 #pragma once
 #include "Suit.h"
 class Card {
-private:
+protected:
     float nbPoint;
 
 public:
-    virtual bool isTrump(const Card& c) = 0;
-    virtual bool isJoker(const Card& c) = 0;
-    virtual bool isColor(const Card& c) = 0;
+    virtual bool isTrump() = 0;
+    virtual bool isJoker() = 0;
+    virtual bool isColor() = 0;
+    virtual bool isBout() = 0;
+
+    virtual void show() = 0;
     float  getNbPoint() const ;
     void setNbPoint(float point);
     virtual ~Card() = default;

@@ -1,5 +1,2 @@
 #pragma once
-class testCard
-{
-};
-
+void testCard();
