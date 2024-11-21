@@ -28,3 +28,14 @@ void Joker::show()
 {
     std::cout << "Excuse" << std::endl;
 }
+
+bool Joker::operator==( Card& other) 
+{
+    if (other.isJoker()) {
+        return true;
+    }
+    else {
+        return false;
+    }
+}
+

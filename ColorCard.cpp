@@ -62,7 +62,16 @@ void ColorCard::setColor(const Suit s)
 {
 	this->color = s;
 }
-
+bool ColorCard::operator==(Card& other)
+{
+	if (other.isColor()) {
+		ColorCard* color = dynamic_cast< ColorCard*>(&other);
+		if (this->value == color->value && this->color == color->color) {
+			return true;
+		}
+	}
+	return false;
+}
 void ColorCard::show()
 {
 	std::string name = "";

@@ -134,6 +134,7 @@
     <ClCompile Include="Joker.cpp" />
     <ClCompile Include="TarotGame.cpp" />
     <ClCompile Include="testCard.cpp" />
+    <ClCompile Include="testCardPack.cpp" />
     <ClCompile Include="Trump.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -144,6 +145,7 @@
     <ClInclude Include="Joker.h" />
     <ClInclude Include="Suit.h" />
     <ClInclude Include="testCard.h" />
+    <ClInclude Include="testCardPack.h" />
     <ClInclude Include="Trump.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

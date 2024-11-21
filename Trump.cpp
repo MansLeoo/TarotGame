@@ -38,6 +38,17 @@ bool Trump::isBout()
     }
 }
 
+bool Trump::operator==(Card& other)
+{
+    if (other.isTrump()) {
+         Trump* trump = dynamic_cast< Trump*>(&other);
+         if (this->number == trump->number) {
+             return true;
+         }
+    }
+    return false;
+}
+
 int Trump::getNumber() const {
     return number;
 }

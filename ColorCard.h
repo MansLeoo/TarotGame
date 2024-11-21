@@ -12,7 +12,7 @@ public:
     bool isJoker() override;
     bool isColor() override;
     bool isBout() override;
-
+    bool operator==(Card& other)  override;
     void setValue(const int num);
     int getValue() const;
     Suit getColor() const;

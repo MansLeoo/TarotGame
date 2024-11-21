@@ -14,5 +14,7 @@ public:
 	bool isBout() override;
 
 	void show() override;
+	bool operator==(Card& other)  override;
+
 };
 
