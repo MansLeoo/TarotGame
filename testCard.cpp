@@ -71,5 +71,5 @@ void static testIsTrump() {
 	 testIsColor();
 	 testIsTrump();
 	 testIsBout();
-	 std::cout << "Tous les tests ont été effectué" << std::endl;
+	 std::cout << "test Carte [OK]" << std::endl;
  }

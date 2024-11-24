@@ -17,5 +17,8 @@ public :
      void remove(std::shared_ptr<Card> c);
      void addCard(std::shared_ptr<Card> c);
      int size();
+     float getPackPoint();
+     void mergePack(CardPack pack);
+     void SortPack();
 };
 
