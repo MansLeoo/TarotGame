@@ -5,6 +5,8 @@
 #include "testCard.h"
 #include "testCardPack.h"
 #include "Game.h"
+#include "Human.h"
+
 #include <windows.h> 
 int main()
 {
@@ -17,7 +19,9 @@ int main()
     Player p1 = Player("Bob");
     Player p2 = Player("Michel");
     Player p3 = Player("Vero");
-
+    p1.setStrategy(std::make_shared<Human>());
+    p2.setStrategy(std::make_shared<Human>());
+    p3.setStrategy(std::make_shared<Human>());
     vector<shared_ptr<Player>> players;
 
     players.push_back(make_shared<Player>(p1));
@@ -29,8 +33,8 @@ int main()
     players[1]->showHand();
     players[2]->showHand();
 
+    g.auction();
 
-    std::cout << "a = éé";
 
     std::cout << "Hello World!\n";
 }

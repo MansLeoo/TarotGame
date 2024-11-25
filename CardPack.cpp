@@ -84,11 +84,6 @@ void CardPack::sortPack() {
         }
         else if (card->isColor()) {
             std::shared_ptr<ColorCard> colorCard = std::dynamic_pointer_cast<ColorCard>(card);
-            if (colorCard)
-            {
-                colorCard->show();
-
-            }
             if (colorCard->getColor() == Suit::HEART) {
                 heartPack.addCard(card);
             }

@@ -8,7 +8,7 @@ CardPack Player::getHand() {
     return this->hand;
 }
 
-Strategy Player::getStrategy()
+std::shared_ptr<Strategy> Player::getStrategy()
 {
     return this->strategy;
 }
@@ -18,7 +18,7 @@ void Player::setName(std::string name) {
 void Player::setHand(CardPack pack) {
     this->hand = pack;
 }
-void Player::setStrategy(Strategy strat) {
+void Player::setStrategy(std::shared_ptr<Strategy> strat) {
     this->strategy = strat;
 }
 float Player::getNbPoint()
@@ -27,6 +27,7 @@ float Player::getNbPoint()
 }
 void Player::pickCard(std::shared_ptr<Card> card){
     this->hand.addCard(card);
+    this->hand.sortPack();
 }
 
 void Player::setPoint(float nbPoint) {
@@ -48,8 +49,9 @@ Player::Player(std::string name)
     this->name = name;
     this->nbPoint = 0;
 }
-Player::Player(std::string name, Strategy strat) : name(name), strategy(strat) {
+Player::Player(std::string name, std::shared_ptr<Strategy>  strat) : name(name), strategy(strat) {
     this->hand = CardPack();
     this->nbPoint = 0;
 }
+
 

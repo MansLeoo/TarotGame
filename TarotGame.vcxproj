@@ -133,6 +133,7 @@
     <ClCompile Include="CardPack.cpp" />
     <ClCompile Include="ColorCard.cpp" />
     <ClCompile Include="Game.cpp" />
+    <ClCompile Include="Human.cpp" />
     <ClCompile Include="Joker.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Strategy.cpp" />
@@ -148,6 +149,7 @@
     <ClInclude Include="CardPack.h" />
     <ClInclude Include="ColorCard.h" />
     <ClInclude Include="Game.h" />
+    <ClInclude Include="Human.h" />
     <ClInclude Include="Joker.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="Strategy.h" />

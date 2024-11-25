@@ -1,7 +1,9 @@
 #pragma once
 class Strategy
 {
-public :
+public:
+	virtual int overbid() = 0;
+private:
 
 };
 

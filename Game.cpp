@@ -50,9 +50,10 @@ void Game::auction() {
     int leaderIndex = 0;
     int leaderPower = 0;
      for (const auto& player : players) {
-        std::cout << "C'est au tour de " << player->getName() << "de choisir !";
+        std::cout << "C'est au tour de " << player->getName() << " de choisir !";
         printf("Choix possible : \n0 - Passe\n1 - Petite x1 \n2 - Garde x2\n3 - Garde Sans x4\n4 - Garde Contre x6");
         // player choice
+        int playerChoice = player->getStrategy()->overbid();
         if (playerChoice > leaderPower) {
             leaderPower = playerChoice;
             leaderIndex = index;
@@ -83,4 +84,5 @@ void Game::auction() {
 
 
      }
+     std::cout << "L'attaquant sera : " << this->players[leaderIndex]->getName() << " !" << std::endl;
 }

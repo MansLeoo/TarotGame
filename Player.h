@@ -7,18 +7,20 @@ class Player
 protected :
 	std::string name;
 	CardPack hand;
-	Strategy strategy;
+	CardPack trickWin;
+	std::shared_ptr<Strategy> strategy;
 	float nbPoint;
 public :
 	Player(std::string name);
-	Player(std::string name, Strategy strat);
+	Player(std::string name, std::shared_ptr<Strategy>  strat);
 	void pickCard(std::shared_ptr<Card> card);
 	std::string getName();
 	CardPack getHand();
-	Strategy getStrategy();
+	std::shared_ptr<Strategy> getStrategy();
 	void setName(std::string name);
+
 	void setHand(CardPack pack);
-	void setStrategy(Strategy strat);
+	void setStrategy(std::shared_ptr<Strategy> strat);
 	float getNbPoint();
 	void setPoint(float nbPoint);
 	void addPoint(float nbPoint);
