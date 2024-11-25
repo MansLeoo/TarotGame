@@ -1,4 +1,4 @@
-#include "Joker.h"
+﻿#include "Joker.h"
 #include <iostream>
 
 Joker::Joker()
@@ -26,7 +26,7 @@ bool Joker::isBout()
 }
 void Joker::show()
 {
-    std::cout << "Excuse" << std::endl;
+    std::cout << "[E:*]" ;
 }
 
 bool Joker::operator==( Card& other) 

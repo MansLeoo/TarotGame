@@ -2,7 +2,7 @@
 #include <iostream>
 #include <random> 
 #include <algorithm>
-
+#include "Joker.h"
 std::shared_ptr<Card> CardPack::drawCard()
 {
     std::shared_ptr<Card> card = NULL;
@@ -34,14 +34,12 @@ void CardPack::shuffle()
 
 void CardPack::show()
 {
-    std::cout << "Le paquet a comme carte :" << std::endl;
+    std::cout << "{";
     for (const auto& card : this->cardList) {
-        if (card->isBout()) {
-            std::cout << "[bout]";
-        }
         card->show(); 
 
     }
+    std::cout << "}" << std::endl; 
 }
 
 void CardPack::remove(std::shared_ptr<Card> c) {
@@ -72,7 +70,7 @@ void CardPack::mergePack(CardPack pack) {
         this->addCard(card);
     }
 }
-void CardPack::SortPack() {
+void CardPack::sortPack() {
     CardPack trumpPack;   // Paquet pour les atouts
     CardPack heartPack;   // Paquet pour les cartes de cœur
     CardPack cloverPack;  // Paquet pour les cartes de trèfle
@@ -86,7 +84,11 @@ void CardPack::SortPack() {
         }
         else if (card->isColor()) {
             std::shared_ptr<ColorCard> colorCard = std::dynamic_pointer_cast<ColorCard>(card);
+            if (colorCard)
+            {
+                colorCard->show();
 
+            }
             if (colorCard->getColor() == Suit::HEART) {
                 heartPack.addCard(card);
             }
@@ -100,30 +102,36 @@ void CardPack::SortPack() {
             else if (colorCard->getColor() == Suit::DIAMONDS) {
                 diamondPack.addCard(card);
             }
+
         }
-
+        else {
+            std::shared_ptr<Joker> jok = std::dynamic_pointer_cast<Joker>(card);
+            jokerPack.addCard(jok);
+        }
     }
-
-    // Fonction lambda pour trier les cartes dans l'ordre décroissant
-    auto descendingOrderColor = [](const std::shared_ptr<ColorCard>& a, const std::shared_ptr<ColorCard>& b) {
-        return a->getValue() > b->getValue(); // Assure que les cartes sont triées par valeur décroissante
+    auto ascendingOrderColorCard = [](const std::shared_ptr<Card>& a, const std::shared_ptr<Card>& b) {
+        auto cardA = std::dynamic_pointer_cast<ColorCard>(a);
+        auto cardB = std::dynamic_pointer_cast<ColorCard>(b);
+        return cardA && cardB && cardA->getValue() < cardB->getValue();
         };
-    auto descendingOrderTrump = [](const std::shared_ptr<Trump>& a, const std::shared_ptr<Trump>& b) {
-        return a->getNumber() > b->getNumber(); // Assure que les cartes sont triées par valeur décroissante
+    auto ascendingOrderTrumpCard = [](const std::shared_ptr<Card>& a, const std::shared_ptr<Card>& b) {
+        auto cardA = std::dynamic_pointer_cast<Trump>(a);
+        auto cardB = std::dynamic_pointer_cast<Trump>(b);
+        return cardA && cardB && cardA->getNumber() < cardB->getNumber();
         };
-    // Trie chaque sous-paquet
-    std::sort(trumpPack.cardList.begin(), trumpPack.cardList.end(), descendingOrderTrump);
-    std::sort(heartPack.cardList.begin(), heartPack.cardList.end(), descendingOrderColor);
-    std::sort(cloverPack.cardList.begin(), cloverPack.cardList.end(), descendingOrderColor);
-    std::sort(spadePack.cardList.begin(), spadePack.cardList.end(), descendingOrderColor);
-    std::sort(diamondPack.cardList.begin(), diamondPack.cardList.end(), descendingOrderColor);
 
-    // Réassemble le paquet trié
-    this->cardList.clear(); 
+    std::sort(trumpPack.cardList.begin(), trumpPack.cardList.end(), ascendingOrderTrumpCard);
+    std::sort(heartPack.cardList.begin(), heartPack.cardList.end(), ascendingOrderColorCard);
+    std::sort(diamondPack.cardList.begin(), diamondPack.cardList.end(), ascendingOrderColorCard);
+    std::sort(cloverPack.cardList.begin(), cloverPack.cardList.end(), ascendingOrderColorCard);
+    std::sort(spadePack.cardList.begin(), spadePack.cardList.end(), ascendingOrderColorCard);
+    // Réassembler le paquet trié
+    this->cardList.clear();
     this->cardList.insert(this->cardList.end(), trumpPack.cardList.begin(), trumpPack.cardList.end());
     this->cardList.insert(this->cardList.end(), heartPack.cardList.begin(), heartPack.cardList.end());
+    this->cardList.insert(this->cardList.end(), diamondPack.cardList.begin(), diamondPack.cardList.end());
     this->cardList.insert(this->cardList.end(), cloverPack.cardList.begin(), cloverPack.cardList.end());
     this->cardList.insert(this->cardList.end(), spadePack.cardList.begin(), spadePack.cardList.end());
-    this->cardList.insert(this->cardList.end(), diamondPack.cardList.begin(), diamondPack.cardList.end());
+    this->mergePack(jokerPack);
 }
 

@@ -55,7 +55,7 @@ int Trump::getNumber() const {
 
 void Trump::show()
 {
-    std::cout << "L'atout n°" << this->number << " et vaut "  << this->nbPoint <<  " points" << std::endl;
+    std::cout << "[A-" << this->number << "]";
 }
 
 void Trump::setNumber(int num) {

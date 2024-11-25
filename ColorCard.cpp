@@ -50,12 +50,12 @@ void ColorCard::setValue(const int num)
 
 int ColorCard::getValue() const
 {
-	return 0;
+	return this->value;
 }
 
 Suit ColorCard::getColor() const
 {
-	return Suit();
+	return this->color;
 }
 
 void ColorCard::setColor(const Suit s)
@@ -93,6 +93,6 @@ void ColorCard::show()
 		name = std::to_string(this->value);
 		break;
 	}
-	std::cout << name << " : " << toString(this->color) << std::endl;
+	std::cout << "[" << name << ":" << toString(this->color) <<"]" ;
 
 }

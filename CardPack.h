@@ -19,6 +19,6 @@ public :
      int size();
      float getPackPoint();
      void mergePack(CardPack pack);
-     void SortPack();
+     void sortPack();
 };
 
