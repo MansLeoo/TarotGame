@@ -6,6 +6,7 @@
 
 class Human : public Strategy
 {
-	int overbid();
+	Human(std::shared_ptr<Player> p);
+	int overbid() ;
 };
 

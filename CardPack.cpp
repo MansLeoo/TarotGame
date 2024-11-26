@@ -68,6 +68,13 @@ float CardPack::getPackPoint() {
     }
     return sum;
 }
+int CardPack::getNbBout() {
+    int sum = 0;
+    for (const auto& card : this->cardList) {
+        if (card->isBout()) sum++;
+    }
+    return sum;
+}
 void CardPack::mergePack(CardPack pack) {
     for (const auto& card : pack.cardList) {
         this->addCard(card);

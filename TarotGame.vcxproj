@@ -132,6 +132,7 @@
     <ClCompile Include="CardMaking.cpp" />
     <ClCompile Include="CardPack.cpp" />
     <ClCompile Include="ColorCard.cpp" />
+    <ClCompile Include="ComputerPlayer.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="Human.cpp" />
     <ClCompile Include="Joker.cpp" />
@@ -148,6 +149,7 @@
     <ClInclude Include="CardMaking.h" />
     <ClInclude Include="CardPack.h" />
     <ClInclude Include="ColorCard.h" />
+    <ClInclude Include="ComputerPlayer.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="Human.h" />
     <ClInclude Include="Joker.h" />

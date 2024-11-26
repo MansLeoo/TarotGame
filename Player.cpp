@@ -50,6 +50,10 @@ void Player::addTrick(CardPack trick)
         this->trickWin.addCard(card);
     }
 }
+CardPack Player::getTrick(CardPack trick)
+{
+    return this->trickWin;
+}
 Player::Player(std::string name)
 {
     this->name = name;

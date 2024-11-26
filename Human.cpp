@@ -1,6 +1,9 @@
 #include "Human.h"
 #include <iostream>
 
+Human::Human(std::shared_ptr<Player>p) {
+    this->player = p;
+}
 int Human::overbid()
 {
     int number = 9;
