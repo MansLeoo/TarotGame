@@ -58,6 +58,25 @@ void Game::auction() {
             leaderPower = playerChoice;
             leaderIndex = index;
         }
+        printf("\n%i \n", leaderPower);
+        switch (leaderPower)
+        {
+        case 1:
+            std::cout << player->getName() << " a choisi de  faire une petite !" << std::endl;
+            break;
+        case 2:
+            std::cout << player->getName() << " a choisi de  faire une garde !" << std::endl;
+            break;
+        case 3:
+            std::cout << player->getName() << " a choisi de  faire une garde sans !" << std::endl;
+            break;
+        case 4:
+            std::cout << player->getName() << " a choisi de  faire une garde contre !" << std::endl;
+            break;
+        case 0:
+            std::cout << player->getName() << " a choisi de passer !" << std::endl;
+            break;
+        }
         index++;
     }
      if (leaderIndex == 0) {

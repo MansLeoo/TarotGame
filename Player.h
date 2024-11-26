@@ -2,6 +2,7 @@
 #include "CardPack.h"
 #include "Strategy.h"
 #include <memory>
+class Strategy;
 class Player
 {
 protected :
@@ -13,6 +14,7 @@ protected :
 public :
 	Player(std::string name);
 	Player(std::string name, std::shared_ptr<Strategy>  strat);
+	CardPack getPlayableCards(const std::shared_ptr<Card>& leadCard);
 	void pickCard(std::shared_ptr<Card> card);
 	std::string getName();
 	CardPack getHand();

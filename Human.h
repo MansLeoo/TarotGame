@@ -6,7 +6,10 @@
 
 class Human : public Strategy
 {
+public:
 	Human(std::shared_ptr<Player> p);
+protected:
 	int overbid() ;
+	std::shared_ptr<Card> playCard(CardPack pack);
 };
 
