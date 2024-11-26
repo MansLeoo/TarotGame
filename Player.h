@@ -26,6 +26,8 @@ public :
 	void addPoint(float nbPoint);
 	void removePoint(float nbPoint);
 	void showHand();
+	void addTrick(CardPack trick);
+	CardPack getTrick(CardPack trick);
 
 };
 

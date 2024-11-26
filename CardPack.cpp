@@ -50,6 +50,9 @@ void CardPack::remove(std::shared_ptr<Card> c) {
         }
     }
 }
+const std::vector<std::shared_ptr<Card>>& CardPack::getCards() const {
+    return this->cardList;
+}
 void CardPack::addCard(std::shared_ptr<Card> c)
 {
     this->cardList.push_back(c);

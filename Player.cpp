@@ -44,6 +44,12 @@ void Player::showHand() {
     this->hand.show();
 
 }
+void Player::addTrick(CardPack trick)
+{
+    for (const auto& card : trick.getCards()) {
+        this->trickWin.addCard(card);
+    }
+}
 Player::Player(std::string name)
 {
     this->name = name;
