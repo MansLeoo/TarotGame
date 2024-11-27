@@ -18,6 +18,7 @@ public:
     Suit getColor() const;
     void setColor(const Suit s) ;
     void show();
+    bool BetterThanLeader(std::shared_ptr<Card> card);
     ~ColorCard() override = default;
 };
 

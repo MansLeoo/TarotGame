@@ -10,6 +10,7 @@ class CardPack
 private :
     std::vector<std::shared_ptr<Card>> cardList;
 public :
+    CardPack();
     std::shared_ptr<Card> drawCard();
      std::vector < std::shared_ptr<Card> > drawCards(int numberCards);
      void  shuffle();
@@ -21,6 +22,7 @@ public :
      float getPackPoint();
      int getNbBout();
      void mergePack(CardPack pack);
+     CardPack(const CardPack& other);
      void sortPack();
 };
 

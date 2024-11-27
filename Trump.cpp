@@ -1,7 +1,6 @@
 #include "Trump.h"
 #include <iostream>
 
-// Constructeur
 Trump::Trump(int number) : number(number) {
     if (number > 21 || number < 1) {
         throw std::runtime_error("A Trump need a value beetween 1 and 15");
@@ -60,4 +59,16 @@ void Trump::show()
 
 void Trump::setNumber(int num) {
     number = num;
+}
+bool Trump::BetterThanLeader(std::shared_ptr<Card> card)
+{
+    if (card->isColor()) return true;
+    if (card->isJoker()) return true;
+    if (card->isTrump()) {
+        auto trump = std::dynamic_pointer_cast<Trump>(card);
+            if (trump->getNumber() > this->number) return false;
+            return true;
+        
+    }
+    return false;
 }

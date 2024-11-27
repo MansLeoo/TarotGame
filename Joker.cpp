@@ -38,4 +38,7 @@ bool Joker::operator==( Card& other)
         return false;
     }
 }
-
+bool Joker::BetterThanLeader(std::shared_ptr<Card> card)
+{
+	return false;
+}

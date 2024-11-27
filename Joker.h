@@ -16,5 +16,7 @@ public:
 	void show() override;
 	bool operator==(Card& other)  override;
 
+	bool BetterThanLeader(std::shared_ptr<Card> card);
+
 };
 

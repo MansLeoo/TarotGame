@@ -1,5 +1,6 @@
 #pragma once
 #include "Suit.h"
+#include <memory>
 class Card {
 protected:
     float nbPoint = 0;
@@ -9,6 +10,8 @@ public:
     virtual bool isJoker() = 0;
     virtual bool isColor() = 0;
     virtual bool isBout() = 0;
+    virtual bool BetterThanLeader(std::shared_ptr<Card> card) = 0;
+
     virtual bool operator==(Card& other) = 0;
     virtual void show() = 0;
     float  getNbPoint() const ;

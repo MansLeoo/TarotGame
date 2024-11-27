@@ -1,18 +1,21 @@
-#pragma once
-#include <memory>
+#ifndef CARDMAKING_H
+#define CARDMAKING_H
+
 #include "CardPack.h"
-#include <vector>
+#include "Joker.h"
+#include "Trump.h"
+#include "ColorCard.h"
 #include <memory>
 
 class CardMaking {
 private:
-    static std::unique_ptr<CardMaking> instance;
-    CardMaking();
+;
 
 public:
-    CardMaking(const CardMaking&) = delete;
-    static CardMaking& getInstance();
-    CardPack createTarotCardPack();
-    ~CardMaking() = default;
+
+
+    // Static method to create a tarot card pack
+    static CardPack createTarotCardPack();
 };
 
+#endif 

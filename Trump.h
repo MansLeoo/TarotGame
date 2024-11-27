@@ -14,6 +14,7 @@ public :
     bool isBout() override;
     bool operator==(Card& other)  override;
     void setNumber(const int num);
+    bool BetterThanLeader(std::shared_ptr<Card> card);
     int getNumber() const;
     void show();
     ~Trump() override = default;

@@ -9,6 +9,7 @@ class Game
 {
 private:
     int nbPlayer;
+    int indexFirstPlay;
     shared_ptr<CardPack> pack;
     shared_ptr<CardPack> chien;
     shared_ptr<Player> preneur;
@@ -22,5 +23,7 @@ public :
     void addPlayer(shared_ptr<Player>);
     void distributeCards();
     void auction();
+    int determineWinnerTrick(CardPack trick);
+    void playGame();
 };
 

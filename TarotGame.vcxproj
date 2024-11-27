@@ -139,7 +139,6 @@
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Strategy.cpp" />
     <ClCompile Include="TarotGame.cpp" />
-    <ClCompile Include="Team.cpp" />
     <ClCompile Include="testCard.cpp" />
     <ClCompile Include="testCardPack.cpp" />
     <ClCompile Include="Trump.cpp" />
@@ -156,7 +155,6 @@
     <ClInclude Include="Player.h" />
     <ClInclude Include="Strategy.h" />
     <ClInclude Include="Suit.h" />
-    <ClInclude Include="Team.h" />
     <ClInclude Include="testCard.h" />
     <ClInclude Include="testCardPack.h" />
     <ClInclude Include="Trump.h" />

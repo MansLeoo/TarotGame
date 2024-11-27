@@ -4,7 +4,7 @@ std::string Player::getName()
 {
     return this->name;
 }
-CardPack Player::getHand() {
+std::shared_ptr<CardPack> Player::getHand() {
     return this->hand;
 }
 
@@ -15,7 +15,7 @@ std::shared_ptr<Strategy> Player::getStrategy()
 void Player::setName(std::string name) {
     this->name = name;
 }
-void Player::setHand(CardPack pack) {
+void Player::setHand(std::shared_ptr<CardPack> pack) {
     this->hand = pack;
 }
 void Player::setStrategy(std::shared_ptr<Strategy> strat) {
@@ -26,8 +26,8 @@ float Player::getNbPoint()
     return this->nbPoint;
 }
 void Player::pickCard(std::shared_ptr<Card> card){
-    this->hand.addCard(card);
-    this->hand.sortPack();
+    this->hand->addCard(card);
+    this->hand->sortPack();
 }
 
 void Player::setPoint(float nbPoint) {
@@ -41,16 +41,16 @@ void Player::removePoint(float nbPoint) {
 }
 void Player::showHand() {
     std::cout << "Jeu de " << this->name << " : " << std::endl;
-    this->hand.show();
+    this->hand->show();
 
 }
-void Player::addTrick(CardPack trick)
+void Player::addTrick(std::shared_ptr<CardPack>  trick)
 {
-    for (const auto& card : trick.getCards()) {
-        this->trickWin.addCard(card);
+    for (const auto& card : trick->getCards()) {
+        this->trickWin->addCard(card);
     }
 }
-CardPack Player::getTrick(CardPack trick)
+std::shared_ptr<CardPack>  Player::getTrick()
 {
     return this->trickWin;
 }
@@ -58,77 +58,74 @@ Player::Player(std::string name)
 {
     this->name = name;
     this->nbPoint = 0;
+    this->trickWin = std::make_shared<CardPack>();
+    this->hand = std::make_shared<CardPack>();
+    
 }
 Player::Player(std::string name, std::shared_ptr<Strategy>  strat) : name(name), strategy(strat) {
-    this->hand = CardPack();
+    this->hand = std::make_shared<CardPack>();
     this->nbPoint = 0;
+    this->hand = std::make_shared<CardPack>();
+    this->trickWin = std::make_shared<CardPack>();
 }
-CardPack Player::getPlayableCards(const std::shared_ptr<Card>& leadCard) {
-    CardPack pack;
 
-    // Si la carte menée est l'Excuse, toutes les cartes sont jouables
+// Give a list of playable cards for the current trick
+std::shared_ptr<CardPack> Player::getPlayableCards(const std::shared_ptr<Card>& leadCard) {
+    CardPack pack;
+    if (!leadCard) return  this->hand;
     if (leadCard->isJoker()) {
-        return this->hand;
+        return  this->hand;
     }
 
-    // Si la carte menée est un atout
     if (leadCard->isTrump()) {
         auto leaderTrump = std::dynamic_pointer_cast<Trump>(leadCard);
-
-        for (const auto& card : hand.getCards()) {
+        for (const auto& card : hand->getCards()) {
             if (card->isTrump()) {
                 auto trump = std::dynamic_pointer_cast<Trump>(card);
-                // Ajouter les atouts plus grands que celui mené
                 if (trump->getNumber() > leaderTrump->getNumber()) {
                     pack.addCard(card);
                 }
             }
         }
 
-        // Si aucun atout jouable trouvé, toutes les cartes sont jouables
-        if (pack.size() != 0) {
+
+        if (pack.size() == 0) {
             return this->hand;
         }
-        return pack;
+        return std::make_shared<CardPack>(pack);
     }
-
-    // Si la carte menée est une carte de couleur
+    //if leadCard is a color Card
     if (leadCard->isColor()) {
         auto leaderColorCard = std::dynamic_pointer_cast<ColorCard>(leadCard);
         std::string leadColor = toString(leaderColorCard->getColor());
 
-        // Ajouter les cartes de la couleur demandée
         bool hasColor = false;
-        for (const auto& card : hand.getCards()) {
+        for (const auto& card : hand->getCards()) {
             if (card->isColor()) {
                 auto colorCard = std::dynamic_pointer_cast<ColorCard>(card);
-                if (toString(colorCard->getColor()) == leadColor) {
+                if (toString(colorCard->getColor()) == leadColor) { // Check if card have the same suit
                     hasColor = true;
                     pack.addCard(card);
                 }
             }
         }
 
-        // Si aucune carte de la couleur demandée
         if (!hasColor) {
-            // Ajouter tous les atouts disponibles
             bool hasTrumps = false;
-            for (const auto& card : hand.getCards()) {
+            for (const auto& card : hand->getCards()) {
                 if (card->isTrump()) {
                     hasTrumps = true;
                     pack.addCard(card);
                 }
             }
 
-            // Si aucun atout disponible, toutes les cartes sont jouables
             if (!hasTrumps) {
                 return this->hand;
             }
         }
-        return pack;
+         return std::make_shared<CardPack>(pack);;
     }
 
-    // Si aucune règle ne s'applique, toutes les cartes sont jouables
     return this->hand;
 }
 
