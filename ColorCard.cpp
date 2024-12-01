@@ -129,10 +129,7 @@ bool ColorCard::BetterThanLeader(std::shared_ptr<Card> card)
 
     // If the leader card is a Color card:
     if (card->isColor()) {
-        std::cout << "Je compare";
-        card->show();
-        std::cout << "et";
-        this->show();
+
         auto colorCard = std::dynamic_pointer_cast<ColorCard>(card);
         // If the suits do not match, this card cannot win.
         if (toString(this->color) != toString(colorCard->getColor())) {
@@ -141,11 +138,9 @@ bool ColorCard::BetterThanLeader(std::shared_ptr<Card> card)
         else {
             // Compare values if the suits are the same.
             if (colorCard->getValue() > this->value) {
-                std::cout << "LEADER : ";
                 colorCard->show();
                 return false; // Leader card has a higher value.
             }
-            std::cout << "LEADER : ";
             this->show();
             return true; // This card wins.
         }

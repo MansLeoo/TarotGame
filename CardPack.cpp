@@ -170,3 +170,12 @@ void CardPack::sortPack() {
     this->cardList.insert(this->cardList.end(), spadePack.cardList.begin(), spadePack.cardList.end());
     this->mergePack(jokerPack); // Add jokers to the pack
 }
+void CardPack::showGraphicCard(float x , float y , sf::RenderWindow& window) {
+    int jump = 100;
+    int index = 0;
+    for (const auto& card : this->cardList) {
+        card->setPosition(x + jump *(index % 10), y + jump * 2 * (index / 10 ));
+        card->draw(window);
+        index++;
+    }
+}

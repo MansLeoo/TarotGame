@@ -7,6 +7,7 @@
 #include "Game.h"
 #include "Human.h"
 #include "ComputerPlayer.h"
+#include <SFML/Graphics.hpp>
 
 #include <windows.h> 
 int main()
@@ -24,11 +25,10 @@ int main()
     p2->setStrategy(std::make_shared<ComputerPlayer>(p2));
     p3->setStrategy(std::make_shared<Human>(p3));
 
-    std::vector<std::shared_ptr<Player>> players = {p1, p2, p3};
+    std::vector<std::shared_ptr<Player>> players = { p1, p2, p3 };
     Game g = Game(players);
     g.distributeCards();
     g.auction();
     g.playGame();
 
 }
-

@@ -24,5 +24,6 @@ public :
      void mergePack(CardPack pack);
      CardPack(const CardPack& other);
      void sortPack();
+     void showGraphicCard(float x, float y, sf::RenderWindow& window);
 };
 

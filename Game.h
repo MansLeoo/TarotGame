@@ -18,7 +18,7 @@ private:
     int multiplier;
 public :
     Game();
-    Game(vector<shared_ptr<Player>> players);
+    Game(vector<shared_ptr<Player>> players );
     void initGame();
     void addPlayer(shared_ptr<Player>);
     void distributeCards();
